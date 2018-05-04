@@ -10,7 +10,9 @@ includes:
 search: true
 
 toc_footers:
-- <a href='http://github.com/mpociot/documentarian'>Documentation Powered by Documentarian</a>
+- 
+<a href='https://datacube.io'>Create an account</a>
+<a href='http://github.com/mpociot/documentarian'>Documentation Powered by Documentarian</a>
 ---
 
 # API Reference
