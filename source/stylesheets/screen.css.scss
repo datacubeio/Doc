@@ -228,7 +228,7 @@ html, body {
     display: block;
     margin-top: $nav-v-padding;
     padding: $nav-padding;
-    background-color: $tg-slate;
+    background-color: white;
     border-radius: 0 3px 3px 0;
   }
   padding: 0 1.5em 5em 0; // increase touch size area
@@ -242,7 +242,7 @@ html, body {
   font-weight: bold;
   line-height: 16px;
   img {
-    height: 16px;
+    height: 32px;
     vertical-align: bottom;
   }
 
@@ -698,7 +698,7 @@ a[data-title=Resources] {
     color: $white;
   }
   .s2 {
-    color: #a6e22e;
+    color: #51bcff;
   }
   .mi {
     color: #f6574d;
