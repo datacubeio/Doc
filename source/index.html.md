@@ -10,16 +10,15 @@ includes:
 search: true
 
 toc_footers:
-- 
-<a href='https://datacube.io'>Create an account</a>
-<a href='http://github.com/mpociot/documentarian'>Documentation Powered by Documentarian</a>
+- <a href='https://datacube.io'>Create an account</a>
+- <a href='http://github.com/mpociot/documentarian'>Documentation Powered by Documentarian</a>
 ---
 
 # API Reference
 
 Welcome to Datacube.io's API!
 
-You can use this API to access all our API endpoints, such as the <a href="#user">User API</a> to look up email addresses, or the <a href="#backup">Backup API</a> to look up backup information.
+You can use this API to access all our API endpoints, such as the <a href="#User API">user-api</a> to look up email addresses, or the <a href="#Backup API">backup-api</a> to look up backup information.
 The API is organized around <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>. All requests should be made over SSL. All request and response bodies, including errors, are encoded in JSON.
 
 We also have some specific language bindings to make integration easier. You can switch the programming language of the examples with the tabs in the top right.
