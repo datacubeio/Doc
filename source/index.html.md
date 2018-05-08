@@ -54,13 +54,8 @@ Before getting your API's key, you need to register to <a href="https://datacube
 </tr>
 <tr>
 <td>201</td>
-<td>Created</td>
-<td>The resource was successfully created.</td>
-</tr>
-<tr>
-<td>202</td>
-<td>Async created</td>
-<td>The resource was asynchronously created</td>
+<td>Login 2FA</td>
+<td>Double authentication, please send request to the logindouble endpoint.</td>
 </tr>
 <tr>
 <td>400</td>
@@ -78,9 +73,19 @@ Before getting your API's key, you need to register to <a href="https://datacube
 <td>Over plan quota on this endpoint.</td>
 </tr>
 <tr>
+<td>403</td>
+<td>Ownership error</td>
+<td>This service is not yours.</td>
+</tr>
+<tr>
 <td>404</td>
 <td>Not found</td>
 <td>The resource does not exist.</td>
+</tr>
+<tr>
+<td>409</td>
+<td>Storj Request Error</td>
+<td>Can't request upload.</td>
 </tr>
 <tr>
 <td>422</td>
@@ -188,9 +193,6 @@ var settings = {
 `HEAD api/v1/backup/{id}`
 
 
-<!-- END_905fb15f2c83e2d6cb615a288395294a -->
-
-<!-- START_4e80844fd62a1c2039ac4678fe554317 -->
 ## Destroy a Backup
 
 Used to create a destroy task for a given backup
