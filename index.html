@@ -389,13 +389,8 @@ Requests are authenticated using an &quot;X-API-KEY&quot; in the header</a>.</p>
 </tr>
 <tr>
 <td>201</td>
-<td>Created</td>
-<td>The resource was successfully created.</td>
-</tr>
-<tr>
-<td>202</td>
-<td>Async created</td>
-<td>The resource was asynchronously created</td>
+<td>Login 2FA</td>
+<td>Double authentication, please send request to the logindouble endpoint.</td>
 </tr>
 <tr>
 <td>400</td>
@@ -413,9 +408,19 @@ Requests are authenticated using an &quot;X-API-KEY&quot; in the header</a>.</p>
 <td>Over plan quota on this endpoint.</td>
 </tr>
 <tr>
+<td>403</td>
+<td>Ownership error</td>
+<td>This service is not yours.</td>
+</tr>
+<tr>
 <td>404</td>
 <td>Not found</td>
 <td>The resource does not exist.</td>
+</tr>
+<tr>
+<td>409</td>
+<td>Storj Request Error</td>
+<td>Can&#39;t request upload.</td>
 </tr>
 <tr>
 <td>422</td>
@@ -510,10 +515,6 @@ task to upload one.</p>
 <p><code>GET api/v1/backup/{id}</code></p>
 
 <p><code>HEAD api/v1/backup/{id}</code></p>
-
-<!-- END_905fb15f2c83e2d6cb615a288395294a -->
-
-<!-- START_4e80844fd62a1c2039ac4678fe554317 -->
 <h2 id='destroy-a-backup'>Destroy a Backup</h2>
 <p>Used to create a destroy task for a given backup</p>
 
