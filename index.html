@@ -196,17 +196,6 @@
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#register" class="toc-h2 toc-link" data-title="Register">Register</a>
-                  </li>
-                  <li>
-                    <a href="#login" class="toc-h2 toc-link" data-title="Login">Login</a>
-                  </li>
-                  <li>
-                    <a href="#login-with-2fa" class="toc-h2 toc-link" data-title="Login with 2FA">Login with 2FA</a>
-                  </li>
-              </ul>
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
@@ -321,6 +310,15 @@
             <a href="#user-api" class="toc-h1 toc-link" data-title="User API">User API</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#register" class="toc-h2 toc-link" data-title="Register">Register</a>
+                  </li>
+                  <li>
+                    <a href="#login" class="toc-h2 toc-link" data-title="Login">Login</a>
+                  </li>
+                  <li>
+                    <a href="#login-with-2fa" class="toc-h2 toc-link" data-title="Login with 2FA">Login with 2FA</a>
+                  </li>
+                  <li>
                     <a href="#get-a-user-information" class="toc-h2 toc-link" data-title="Get a user information">Get a user information</a>
                   </li>
                   <li>
@@ -370,193 +368,9 @@ To play around with a few examples, we recommend a REST client called Postman.</
 <h1 id='authentication'>Authentication</h1>
 <p>Authentication is done via the API key which you can find in your <a href="/profile">account settings</a> or 
 by using the userLogin method.
-Requests are authenticated using <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP Basic Auth</a>.</p>
+Requests are authenticated using an &quot;X-API-KEY&quot; in the header</a>.</p>
 
 <p>Before getting your API&#39;s key, you need to register to <a href="https://datacube.io">Datacube.io</a>.</p>
-<h2 id='register'>Register</h2>
-<p>Used to register an user</p>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"http://api.datacube.io/api/v1/user"</span> <span class="se">\</span>
--H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
-    -d <span class="s2">"email"</span><span class="o">=</span><span class="s2">"muller.ocie@example.org"</span> <span class="se">\</span>
-    -d <span class="s2">"password"</span><span class="o">=</span><span class="s2">"qui"</span> <span class="se">\</span>
-    -d <span class="s2">"first_name"</span><span class="o">=</span><span class="s2">"qui"</span> <span class="se">\</span>
-    -d <span class="s2">"last_name"</span><span class="o">=</span><span class="s2">"qui"</span> <span class="se">\</span>
-    -d <span class="s2">"phone_number"</span><span class="o">=</span><span class="s2">"qui"</span> <span class="se">\</span>
-
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"http://api.datacube.io/api/v1/user"</span><span class="p">,</span>
-    <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
-    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"muller.ocie@example.org"</span><span class="p">,</span>
-        <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"qui"</span><span class="p">,</span>
-        <span class="s2">"first_name"</span><span class="p">:</span> <span class="s2">"qui"</span><span class="p">,</span>
-        <span class="s2">"last_name"</span><span class="p">:</span> <span class="s2">"qui"</span><span class="p">,</span>
-        <span class="s2">"phone_number"</span><span class="p">:</span> <span class="s2">"qui"</span>
-<span class="p">},</span>
-    <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"accept"</span><span class="p">:</span> <span class="s2">"application/json"</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-</code></pre><h3 id='http-request'>HTTP Request</h3>
-<p><code>POST api/v1/user</code></p>
-<h4 id='parameters'>Parameters</h4>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Status</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>email</td>
-<td>email</td>
-<td>required</td>
-<td></td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>required</td>
-<td></td>
-</tr>
-<tr>
-<td>first_name</td>
-<td>string</td>
-<td>required</td>
-<td></td>
-</tr>
-<tr>
-<td>last_name</td>
-<td>string</td>
-<td>required</td>
-<td></td>
-</tr>
-<tr>
-<td>phone_number</td>
-<td>string</td>
-<td>required</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id='login'>Login</h2>
-<p>Used to login an user and get API&#39;s token</p>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"http://api.datacube.io/api/v1/user/login"</span> <span class="se">\</span>
--H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
-    -d <span class="s2">"email"</span><span class="o">=</span><span class="s2">"excepturi"</span> <span class="se">\</span>
-    -d <span class="s2">"password"</span><span class="o">=</span><span class="s2">"excepturi"</span> <span class="se">\</span>
-
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"http://api.datacube.io/api/v1/user/login"</span><span class="p">,</span>
-    <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
-    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"excepturi"</span><span class="p">,</span>
-        <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"excepturi"</span>
-<span class="p">},</span>
-    <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"accept"</span><span class="p">:</span> <span class="s2">"application/json"</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-</code></pre><h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST api/v1/user/login</code></p>
-<h4 id='parameters-2'>Parameters</h4>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Status</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>email</td>
-<td>string</td>
-<td>required</td>
-<td></td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>required</td>
-<td></td>
-</tr>
-</tbody></table>
-
-<!-- END_7a184547882598fc164c10be7745584b -->
-
-<!-- START_b69ba7ceb457587e7334b7b7b3815a5a -->
-<h2 id='login-with-2fa'>Login with 2FA</h2>
-<p>Used to login an user with two factor auth and get API&#39;s token</p>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"http://api.datacube.io/api/v1/user/logindouble"</span> <span class="se">\</span>
--H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
-    -d <span class="s2">"email"</span><span class="o">=</span><span class="s2">"quod"</span> <span class="se">\</span>
-    -d <span class="s2">"password"</span><span class="o">=</span><span class="s2">"quod"</span> <span class="se">\</span>
-    -d <span class="s2">"code"</span><span class="o">=</span><span class="s2">"quod"</span> <span class="se">\</span>
-
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"http://api.datacube.io/api/v1/user/logindouble"</span><span class="p">,</span>
-    <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
-    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"quod"</span><span class="p">,</span>
-        <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"quod"</span><span class="p">,</span>
-        <span class="s2">"code"</span><span class="p">:</span> <span class="s2">"quod"</span>
-<span class="p">},</span>
-    <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"accept"</span><span class="p">:</span> <span class="s2">"application/json"</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-
-</code></pre><h3 id='http-request-3'>HTTP Request</h3>
-<p><code>POST api/v1/user/logindouble</code></p>
-<h4 id='parameters-3'>Parameters</h4>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Status</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>email</td>
-<td>string</td>
-<td>required</td>
-<td></td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>required</td>
-<td></td>
-</tr>
-<tr>
-<td>code</td>
-<td>string</td>
-<td>required</td>
-<td></td>
-</tr>
-</tbody></table>
 <h1 id='errors'>Errors</h1>
 <p>Our API returns standard HTTP success or error status codes. For errors, we will also include extra information about what went wrong encoded in the response as JSON. The various HTTP status codes we might return are listed below.</p>
 
@@ -692,7 +506,7 @@ task to upload one.</p>
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missing X-API-KEY header"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">418</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
 <p><code>GET api/v1/backup/{id}</code></p>
 
 <p><code>HEAD api/v1/backup/{id}</code></p>
@@ -718,7 +532,7 @@ task to upload one.</p>
     <span class="p">}</span>
 <span class="p">}</span>
 
-</code></pre><h3 id='http-request-5'>HTTP Request</h3>
+</code></pre><h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST api/v1/backup/{id}/destroy</code></p>
 <h2 id='download-a-backup'>Download a backup</h2>
 <p>Used to create a download task for a given backup</p>
@@ -738,7 +552,7 @@ task to upload one.</p>
     <span class="p">}</span>
 <span class="p">}</span>
 
-</code></pre><h3 id='http-request-6'>HTTP Request</h3>
+</code></pre><h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST api/v1/backup/{id}/download</code></p>
 
 <!-- END_ee09e2d9c0c9ba8a4f8e652241912b7f -->
@@ -771,7 +585,7 @@ task to upload one.</p>
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missing X-API-KEY header"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">418</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-7'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET api/v1/backup/{id}/jobs</code></p>
 
 <p><code>HEAD api/v1/backup/{id}/jobs</code></p>
@@ -802,7 +616,7 @@ task to upload one.</p>
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missing X-API-KEY header"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">418</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-8'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET api/v1/backup/{id}/blocs</code></p>
 
 <p><code>HEAD api/v1/backup/{id}/blocs</code></p>
@@ -837,7 +651,7 @@ task to upload one.</p>
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missing X-API-KEY header"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">418</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-9'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET api/v1/bloc/{id}</code></p>
 
 <p><code>HEAD api/v1/bloc/{id}</code></p>
@@ -871,7 +685,7 @@ For example you can retrieve the information of a given job.</p>
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missing X-API-KEY header"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">418</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-10'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET api/v1/job/{id}</code></p>
 
 <p><code>HEAD api/v1/job/{id}</code></p>
@@ -906,7 +720,7 @@ You can retrieve backup information from each service too.</p>
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missing X-API-KEY header"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">418</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-11'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET api/v1/service</code></p>
 
 <p><code>HEAD api/v1/service</code></p>
@@ -937,7 +751,7 @@ You can retrieve backup information from each service too.</p>
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missing X-API-KEY header"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">418</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-12'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET api/v1/service/{id}</code></p>
 
 <p><code>HEAD api/v1/service/{id}</code></p>
@@ -980,9 +794,9 @@ You can retrieve backup information from each service too.</p>
     <span class="p">}</span>
 <span class="p">}</span>
 
-</code></pre><h3 id='http-request-13'>HTTP Request</h3>
+</code></pre><h3 id='http-request-10'>HTTP Request</h3>
 <p><code>POST api/v1/service</code></p>
-<h4 id='parameters-4'>Parameters</h4>
+<h4 id='parameters'>Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1077,9 +891,9 @@ You can retrieve backup information from each service too.</p>
     <span class="p">}</span>
 <span class="p">}</span>
 
-</code></pre><h3 id='http-request-14'>HTTP Request</h3>
+</code></pre><h3 id='http-request-11'>HTTP Request</h3>
 <p><code>PUT api/v1/service/{id}</code></p>
-<h4 id='parameters-5'>Parameters</h4>
+<h4 id='parameters-2'>Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1137,7 +951,7 @@ You can retrieve backup information from each service too.</p>
     <span class="p">}</span>
 <span class="p">}</span>
 
-</code></pre><h3 id='http-request-15'>HTTP Request</h3>
+</code></pre><h3 id='http-request-12'>HTTP Request</h3>
 <p><code>DELETE api/v1/service/{id}</code></p>
 
 <!-- END_45f418a3960b4fb6eb728750729325af -->
@@ -1170,7 +984,7 @@ You can retrieve backup information from each service too.</p>
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missing X-API-KEY header"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">418</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-16'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET api/v1/service/{id}/backups</code></p>
 
 <p><code>HEAD api/v1/service/{id}/backups</code></p>
@@ -1192,7 +1006,7 @@ You can retrieve backup information from each service too.</p>
     <span class="p">}</span>
 <span class="p">}</span>
 
-</code></pre><h3 id='http-request-17'>HTTP Request</h3>
+</code></pre><h3 id='http-request-14'>HTTP Request</h3>
 <p><code>POST api/v1/service/{id}/backup</code></p>
 <h1 id='support-api'>Support API</h1>
 <p>The Support API let you handle all the task link to the support
@@ -1224,7 +1038,7 @@ For example you can create ticket, get information about one etc...</p>
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missing X-API-KEY header"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">418</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-18'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-15'>HTTP Request</h3>
 <p><code>GET api/v1/support/services</code></p>
 
 <p><code>HEAD api/v1/support/services</code></p>
@@ -1255,7 +1069,7 @@ For example you can create ticket, get information about one etc...</p>
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missing X-API-KEY header"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">418</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-19'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET api/v1/support/categories</code></p>
 
 <p><code>HEAD api/v1/support/categories</code></p>
@@ -1286,7 +1100,7 @@ For example you can create ticket, get information about one etc...</p>
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missing X-API-KEY header"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">418</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-20'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET api/v1/support/category/{id}</code></p>
 
 <p><code>HEAD api/v1/support/category/{id}</code></p>
@@ -1317,7 +1131,7 @@ For example you can create ticket, get information about one etc...</p>
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missing X-API-KEY header"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">418</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-21'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET api/v1/support/tickets</code></p>
 
 <p><code>HEAD api/v1/support/tickets</code></p>
@@ -1352,7 +1166,7 @@ For example you can create ticket, get information about one etc...</p>
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missing X-API-KEY header"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">418</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-22'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-19'>HTTP Request</h3>
 <p><code>GET api/v1/support/ticket/{id}</code></p>
 
 <p><code>HEAD api/v1/support/ticket/{id}</code></p>
@@ -1385,9 +1199,9 @@ For example you can create ticket, get information about one etc...</p>
     <span class="p">}</span>
 <span class="p">}</span>
 
-</code></pre><h3 id='http-request-23'>HTTP Request</h3>
+</code></pre><h3 id='http-request-20'>HTTP Request</h3>
 <p><code>POST api/v1/support/ticket</code></p>
-<h4 id='parameters-6'>Parameters</h4>
+<h4 id='parameters-3'>Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1447,9 +1261,9 @@ For example you can create ticket, get information about one etc...</p>
 
 
 
-</code></pre><h3 id='http-request-24'>HTTP Request</h3>
+</code></pre><h3 id='http-request-21'>HTTP Request</h3>
 <p><code>POST api/v1/support/ticket/{id}/answer</code></p>
-<h4 id='parameters-7'>Parameters</h4>
+<h4 id='parameters-4'>Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1486,7 +1300,7 @@ For example you can create ticket, get information about one etc...</p>
 
 
 
-</code></pre><h3 id='http-request-25'>HTTP Request</h3>
+</code></pre><h3 id='http-request-22'>HTTP Request</h3>
 <p><code>PUT api/v1/support/ticket/{id}/close</code></p>
 <h2 id='open-a-ticket'>Open a ticket</h2>
 <p>Used to open the specified ticket</p>
@@ -1509,7 +1323,7 @@ For example you can create ticket, get information about one etc...</p>
 
 
 
-</code></pre><h3 id='http-request-26'>HTTP Request</h3>
+</code></pre><h3 id='http-request-23'>HTTP Request</h3>
 <p><code>PUT api/v1/support/ticket/{id}/open</code></p>
 
 <!-- END_df1c86d48ecd1260af41b561584ad7f7 -->
@@ -1517,8 +1331,190 @@ For example you can create ticket, get information about one etc...</p>
 <p>The User API let you handle all the task link to the user.
 For example you can retrieve the information of a given user or register
 a user.</p>
+<h2 id='register'>Register</h2>
+<p>Used to register an user</p>
 
-<!-- START_b2892eb191cd19c0a6f1aae56ba43db4 -->
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"http://api.datacube.io/api/v1/user"</span> <span class="se">\</span>
+-H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+    -d <span class="s2">"email"</span><span class="o">=</span><span class="s2">"muller.ocie@example.org"</span> <span class="se">\</span>
+    -d <span class="s2">"password"</span><span class="o">=</span><span class="s2">"qui"</span> <span class="se">\</span>
+    -d <span class="s2">"first_name"</span><span class="o">=</span><span class="s2">"qui"</span> <span class="se">\</span>
+    -d <span class="s2">"last_name"</span><span class="o">=</span><span class="s2">"qui"</span> <span class="se">\</span>
+    -d <span class="s2">"phone_number"</span><span class="o">=</span><span class="s2">"qui"</span> <span class="se">\</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"http://api.datacube.io/api/v1/user"</span><span class="p">,</span>
+    <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"muller.ocie@example.org"</span><span class="p">,</span>
+        <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"qui"</span><span class="p">,</span>
+        <span class="s2">"first_name"</span><span class="p">:</span> <span class="s2">"qui"</span><span class="p">,</span>
+        <span class="s2">"last_name"</span><span class="p">:</span> <span class="s2">"qui"</span><span class="p">,</span>
+        <span class="s2">"phone_number"</span><span class="p">:</span> <span class="s2">"qui"</span>
+<span class="p">},</span>
+    <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"accept"</span><span class="p">:</span> <span class="s2">"application/json"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre><h3 id='http-request-24'>HTTP Request</h3>
+<p><code>POST api/v1/user</code></p>
+<h4 id='parameters-5'>Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>email</td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>string</td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='login'>Login</h2>
+<p>Used to login an user and get API&#39;s token</p>
+
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"http://api.datacube.io/api/v1/user/login"</span> <span class="se">\</span>
+-H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+    -d <span class="s2">"email"</span><span class="o">=</span><span class="s2">"excepturi"</span> <span class="se">\</span>
+    -d <span class="s2">"password"</span><span class="o">=</span><span class="s2">"excepturi"</span> <span class="se">\</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"http://api.datacube.io/api/v1/user/login"</span><span class="p">,</span>
+    <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"excepturi"</span><span class="p">,</span>
+        <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"excepturi"</span>
+<span class="p">},</span>
+    <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"accept"</span><span class="p">:</span> <span class="s2">"application/json"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre><h3 id='http-request-25'>HTTP Request</h3>
+<p><code>POST api/v1/user/login</code></p>
+<h4 id='parameters-6'>Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<!-- END_7a184547882598fc164c10be7745584b -->
+
+<!-- START_b69ba7ceb457587e7334b7b7b3815a5a -->
+<h2 id='login-with-2fa'>Login with 2FA</h2>
+<p>Used to login an user with two factor auth and get API&#39;s token</p>
+
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"http://api.datacube.io/api/v1/user/logindouble"</span> <span class="se">\</span>
+-H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+    -d <span class="s2">"email"</span><span class="o">=</span><span class="s2">"quod"</span> <span class="se">\</span>
+    -d <span class="s2">"password"</span><span class="o">=</span><span class="s2">"quod"</span> <span class="se">\</span>
+    -d <span class="s2">"code"</span><span class="o">=</span><span class="s2">"quod"</span> <span class="se">\</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"http://api.datacube.io/api/v1/user/logindouble"</span><span class="p">,</span>
+    <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"quod"</span><span class="p">,</span>
+        <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"quod"</span><span class="p">,</span>
+        <span class="s2">"code"</span><span class="p">:</span> <span class="s2">"quod"</span>
+<span class="p">},</span>
+    <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"accept"</span><span class="p">:</span> <span class="s2">"application/json"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+</code></pre><h3 id='http-request-26'>HTTP Request</h3>
+<p><code>POST api/v1/user/logindouble</code></p>
+<h4 id='parameters-7'>Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
 <h2 id='get-a-user-information'>Get a user information</h2>
 <p>Used to fetch informations about the current user</p>
 
