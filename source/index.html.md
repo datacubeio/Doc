@@ -31,158 +31,10 @@ To play around with a few examples, we recommend a REST client called Postman.
 
 Authentication is done via the API key which you can find in your <a href="/profile">account settings</a> or 
 by using the userLogin method.
-Requests are authenticated using <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP Basic Auth</a>.
+Requests are authenticated using an "X-API-KEY" in the header</a>.
 
 Before getting your API's key, you need to register to <a href="https://datacube.io">Datacube.io</a>.
-## Register
 
-Used to register an user
-
-> Example request:
-
-```bash
-curl -X POST "http://api.datacube.io/api/v1/user" \
--H "Accept: application/json" \
-    -d "email"="muller.ocie@example.org" \
-    -d "password"="qui" \
-    -d "first_name"="qui" \
-    -d "last_name"="qui" \
-    -d "phone_number"="qui" \
-
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://api.datacube.io/api/v1/user",
-    "method": "POST",
-    "data": {
-        "email": "muller.ocie@example.org",
-        "password": "qui",
-        "first_name": "qui",
-        "last_name": "qui",
-        "phone_number": "qui"
-},
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-
-### HTTP Request
-`POST api/v1/user`
-
-#### Parameters
-
-Parameter | Type | Status | Description
---------- | ------- | ------- | ------- | -----------
-    email | email |  required  | 
-    password | string |  required  | 
-    first_name | string |  required  | 
-    last_name | string |  required  | 
-    phone_number | string |  required  | 
-
-## Login
-
-Used to login an user and get API's token
-
-> Example request:
-
-```bash
-curl -X POST "http://api.datacube.io/api/v1/user/login" \
--H "Accept: application/json" \
-    -d "email"="excepturi" \
-    -d "password"="excepturi" \
-
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://api.datacube.io/api/v1/user/login",
-    "method": "POST",
-    "data": {
-        "email": "excepturi",
-        "password": "excepturi"
-},
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-
-### HTTP Request
-`POST api/v1/user/login`
-
-#### Parameters
-
-Parameter | Type | Status | Description
---------- | ------- | ------- | ------- | -----------
-    email | string |  required  | 
-    password | string |  required  | 
-
-<!-- END_7a184547882598fc164c10be7745584b -->
-
-<!-- START_b69ba7ceb457587e7334b7b7b3815a5a -->
-## Login with 2FA
-
-Used to login an user with two factor auth and get API's token
-
-> Example request:
-
-```bash
-curl -X POST "http://api.datacube.io/api/v1/user/logindouble" \
--H "Accept: application/json" \
-    -d "email"="quod" \
-    -d "password"="quod" \
-    -d "code"="quod" \
-
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://api.datacube.io/api/v1/user/logindouble",
-    "method": "POST",
-    "data": {
-        "email": "quod",
-        "password": "quod",
-        "code": "quod"
-},
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-
-### HTTP Request
-`POST api/v1/user/logindouble`
-
-#### Parameters
-
-Parameter | Type | Status | Description
---------- | ------- | ------- | ------- | -----------
-    email | string |  required  | 
-    password | string |  required  | 
-    code | string |  required  | 
 
 # Errors
 
@@ -317,9 +169,7 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
+
 ```
 
 > Example response:
@@ -363,9 +213,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 
@@ -395,9 +242,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 
@@ -430,9 +274,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 > Example response:
@@ -474,9 +315,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 > Example response:
@@ -525,9 +363,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 > Example response:
@@ -574,9 +409,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 > Example response:
@@ -626,9 +458,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 > Example response:
@@ -669,9 +498,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 > Example response:
@@ -733,9 +559,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 
@@ -756,9 +579,7 @@ Parameter | Type | Status | Description
     access_password | string |  optional  | 
     access_name | string |  optional  | 
 
-<!-- END_cb9d109b3c89cf7a39568a2825c74718 -->
 
-<!-- START_a34dccf0b80f62b3b69194b4ba55e056 -->
 ## Update a service
 
 Used to update a given service
@@ -794,9 +615,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 
@@ -813,9 +631,7 @@ Parameter | Type | Status | Description
     notification_email | string |  optional  | 
     notification_sms | string |  optional  | 
 
-<!-- END_a34dccf0b80f62b3b69194b4ba55e056 -->
 
-<!-- START_45f418a3960b4fb6eb728750729325af -->
 ## Destroy a service
 
 Used to destroy a given service
@@ -838,9 +654,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 
@@ -873,9 +686,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 > Example response:
@@ -893,10 +703,6 @@ $.ajax(settings).done(function (response) {
 
 `HEAD api/v1/service/{id}/backups`
 
-
-<!-- END_b634dccc272149b0cfdaa8e645e08907 -->
-
-<!-- START_50a8a9c56a26cc50c0c763fe0863dbbf -->
 ## Run a backup
 
 Run a standalone backup task on the given service
@@ -919,9 +725,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 
@@ -929,7 +732,6 @@ $.ajax(settings).done(function (response) {
 `POST api/v1/service/{id}/backup`
 
 
-<!-- END_50a8a9c56a26cc50c0c763fe0863dbbf -->
 
 #Support API
 
@@ -959,9 +761,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 > Example response:
@@ -980,9 +779,6 @@ $.ajax(settings).done(function (response) {
 `HEAD api/v1/support/services`
 
 
-<!-- END_7dd3d94a878c6b30daa227a04c5916a2 -->
-
-<!-- START_bedccbed6f0b6e01df10601e69b17cb8 -->
 ## Get categories list
 
 Used to fetch the list of support categories
@@ -1005,9 +801,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 > Example response:
@@ -1025,10 +818,6 @@ $.ajax(settings).done(function (response) {
 
 `HEAD api/v1/support/categories`
 
-
-<!-- END_bedccbed6f0b6e01df10601e69b17cb8 -->
-
-<!-- START_ac397b253e09cc0e63c0f3b9abe0923b -->
 ## Get a category
 
 Used to fetch a specified category
@@ -1051,9 +840,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 > Example response:
@@ -1071,10 +857,6 @@ $.ajax(settings).done(function (response) {
 
 `HEAD api/v1/support/category/{id}`
 
-
-<!-- END_ac397b253e09cc0e63c0f3b9abe0923b -->
-
-<!-- START_6449fa77bebe56c67ca88927fc4e74e9 -->
 ## Get tickets
 
 Used to fetch the list of tickets
@@ -1097,9 +879,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 > Example response:
@@ -1143,9 +922,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 > Example response:
@@ -1163,10 +939,6 @@ $.ajax(settings).done(function (response) {
 
 `HEAD api/v1/support/ticket/{id}`
 
-
-<!-- END_918a7439fcce89af18cef6bb74356fe3 -->
-
-<!-- START_0d23c568a1be885c3a245d3b20cb43cb -->
 ## Create a ticket
 
 Used to create a new ticket
@@ -1200,9 +972,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 
@@ -1246,9 +1015,9 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
+
+    
+
 ```
 
 
@@ -1284,9 +1053,9 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
+
+    
+
 ```
 
 
@@ -1316,9 +1085,9 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
+
+    
+
 ```
 
 
@@ -1334,7 +1103,149 @@ The User API let you handle all the task link to the user.
 For example you can retrieve the information of a given user or register
 a user.
 
-<!-- START_b2892eb191cd19c0a6f1aae56ba43db4 -->
+## Register
+
+Used to register an user
+
+> Example request:
+
+```bash
+curl -X POST "http://api.datacube.io/api/v1/user" \
+-H "Accept: application/json" \
+    -d "email"="muller.ocie@example.org" \
+    -d "password"="qui" \
+    -d "first_name"="qui" \
+    -d "last_name"="qui" \
+    -d "phone_number"="qui" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://api.datacube.io/api/v1/user",
+    "method": "POST",
+    "data": {
+        "email": "muller.ocie@example.org",
+        "password": "qui",
+        "first_name": "qui",
+        "last_name": "qui",
+        "phone_number": "qui"
+},
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+```
+
+
+### HTTP Request
+`POST api/v1/user`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    email | email |  required  | 
+    password | string |  required  | 
+    first_name | string |  required  | 
+    last_name | string |  required  | 
+    phone_number | string |  required  | 
+
+## Login
+
+Used to login an user and get API's token
+
+> Example request:
+
+```bash
+curl -X POST "http://api.datacube.io/api/v1/user/login" \
+-H "Accept: application/json" \
+    -d "email"="excepturi" \
+    -d "password"="excepturi" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://api.datacube.io/api/v1/user/login",
+    "method": "POST",
+    "data": {
+        "email": "excepturi",
+        "password": "excepturi"
+},
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+```
+
+
+### HTTP Request
+`POST api/v1/user/login`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    email | string |  required  | 
+    password | string |  required  | 
+
+<!-- END_7a184547882598fc164c10be7745584b -->
+
+<!-- START_b69ba7ceb457587e7334b7b7b3815a5a -->
+## Login with 2FA
+
+Used to login an user with two factor auth and get API's token
+
+> Example request:
+
+```bash
+curl -X POST "http://api.datacube.io/api/v1/user/logindouble" \
+-H "Accept: application/json" \
+    -d "email"="quod" \
+    -d "password"="quod" \
+    -d "code"="quod" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://api.datacube.io/api/v1/user/logindouble",
+    "method": "POST",
+    "data": {
+        "email": "quod",
+        "password": "quod",
+        "code": "quod"
+},
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+
+```
+
+
+### HTTP Request
+`POST api/v1/user/logindouble`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    email | string |  required  | 
+    password | string |  required  | 
+    code | string |  required  | 
+
+
 ## Get a user information
 
 Used to fetch informations about the current user
@@ -1357,9 +1268,9 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
+
+    
+
 ```
 
 > Example response:
@@ -1400,9 +1311,9 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
+
+    
+
 ```
 
 
@@ -1437,9 +1348,9 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
+
+    
+
 ```
 
 
@@ -1474,9 +1385,9 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
+
+    
+
 ```
 
 
@@ -1511,9 +1422,9 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
+
+    
+
 ```
 
 
@@ -1554,9 +1465,9 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
+
+    
+
 ```
 
 
@@ -1594,9 +1505,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 > Example response:
@@ -1640,9 +1548,6 @@ var settings = {
     }
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
 ```
 
 
